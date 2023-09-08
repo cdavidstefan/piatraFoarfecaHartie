@@ -8,3 +8,7 @@ const choices = {
   spock: { name: 'Spock', defeats: ['scissors', 'rock'] },
 };
 
+
+
+
+// ce am invatat : order of priority of css(if you use id that will override any class !important),
