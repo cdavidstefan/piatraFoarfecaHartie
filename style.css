@@ -25,6 +25,7 @@ body {
   background: whitesmoke;
   border-radius: 10px;
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.6);
+  
 }
 
 
@@ -46,6 +47,7 @@ h1 {
 
 .player-container {
   margin: 50px;
+  margin-left: 150px;
 }
 
 h2 {
@@ -70,6 +72,8 @@ h2 {
   color: var(--secondaryColor);  
 }
 
+
+/* rock paper scissors lizard spock fit inside the container  */
 /* #player .far:last-of-type,
    #computer .far:last-of-type {
   margin-right: 0;
