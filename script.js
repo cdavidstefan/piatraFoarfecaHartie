@@ -1,4 +1,4 @@
-import { startConfetti, stopConfetti, removeConfetti } from "./confetti";
+import { startConfetti, stopConfetti, removeConfetti } from "./confetti.js";
 
 const playerScoreEl = document.getElementById('playerScore');
 const playerChoiceEl = document.getElementById('playerChoice');
@@ -39,7 +39,6 @@ function resetSelected() {
 };
 
 // Reset Score & Player Choice / Computer Choice
-
 function resetAll(e) {
   playerScoreNumber = 0;
   playerScoreEl.textContent = playerScoreNumber;
@@ -52,6 +51,8 @@ function resetAll(e) {
   resetSelected();
   console.log(playerScoreNumber, computerScoreNumber);
 };
+
+window.resetAll = resetAll;
 
 
 // Random computer choice
@@ -138,9 +139,16 @@ function select(playerChoice) {
   };
 };
 
+window.select = select;
+
 
 
 
 // ce am invatat : order of priority of css(if you use id that will override any class !important),
+//                 dependency tree in modules - just provide an entry file. makes the code a lot cleaner
+// to add to cv - JS modules, FUNdamentals(time/space complexity), algoritmi, leetcode, bundlers(combine code properly), webpack
+// tree shaking (only need specific things)
+
+// by using dynamic importing we can delay the downloading and parsing of confetti js. we can strategically place js modules around to improve performance. in some cases.
 
 startConfetti();
