@@ -25,7 +25,7 @@ body {
   background: whitesmoke;
   border-radius: 10px;
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.6);
-  
+  position: fixed;
 }
 
 
@@ -107,6 +107,7 @@ h2 {
   .game-container {
     width: 95%;
     height: 580px;
+    position: fixed;
   }
 
   h1 {
@@ -114,7 +115,7 @@ h2 {
   }
 
   .player-container {
-    margin: 50px 0 25px 25px;
+    margin: 50px 0 25px 70px;
   }
 
   .far {
@@ -131,6 +132,7 @@ h2 {
 @media screen and (max-width: 376px) {
   .game-container {
     height: 550px;
+    position: fixed;
   }
 
   h1 {
@@ -138,7 +140,7 @@ h2 {
   }
 
   .player-container {
-    margin: 43px 0 25px 20px;
+    margin: 43px 0 25px 70px;
   }
 
   .far {

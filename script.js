@@ -1,3 +1,4 @@
+import { startConfetti, stopConfetti, removeConfetti } from "./confetti";
 
 const playerScoreEl = document.getElementById('playerScore');
 const playerChoiceEl = document.getElementById('playerChoice');
@@ -23,6 +24,8 @@ const choices = {
   spock: { name: 'Spock', defeats: ['scissors', 'rock'] },
 };
 
+let playerScoreNumber = 0;
+let computerScoreNumber = 0;
 let computerChoice = '';
 
 
@@ -31,7 +34,25 @@ function resetSelected() {
   allGameIcons.forEach((icon) => {
       icon.classList.remove('selected');
   });
+  stopConfetti();
+  removeConfetti();
 };
+
+// Reset Score & Player Choice / Computer Choice
+
+function resetAll(e) {
+  playerScoreNumber = 0;
+  playerScoreEl.textContent = playerScoreNumber;
+  playerChoiceEl.textContent = '';
+  computerScoreNumber = 0;
+  computerScoreEl.textContent = computerScoreNumber;
+  computerChoiceEl.textContent = '';
+  resultText.textContent = 'Start Joc!';
+  stopConfetti();
+  resetSelected();
+  console.log(playerScoreNumber, computerScoreNumber);
+};
+
 
 // Random computer choice
 function computerRandomChoice() {
@@ -66,18 +87,39 @@ switch (computerChoice) {
   };
 };
 
+// Check result, increase scores, update resultText
+function updateScore(playerChoice) {
+  console.log(playerChoice, computerChoice);
+  if (playerChoice === computerChoice) {
+    resultText.textContent = "Egalitate.";
+  } else {
+    const choice = choices[playerChoice];
+    console.log(choice.defeats.indexOf(computerChoice));
+    if (choice.defeats.indexOf(computerChoice) > -1) {
+      resultText.textContent = "Ai castigat!";
+      playerScoreNumber++;
+      playerScoreEl.textContent = playerScoreNumber;
+      startConfetti();
+    } else {
+      resultText.textContent = "Ai pierdut!";
+      computerScoreNumber++;
+      computerScoreEl.textContent = computerScoreNumber;
+    }
+  }
+};
 
 // Call functions to process the turn
-function checkResult() {
+function checkResult(playerChoice) {
   resetSelected();
   computerRandomChoice();
   displayComputerChoice();
+  updateScore(playerChoice);
 };
 
 // Passing player selection value and styling icons
 
 function select(playerChoice) {
-    checkResult();
+    checkResult(playerChoice);
   // Add 'selected' styling & playerChoice
   switch (playerChoice) {
     case 'rock':
@@ -99,6 +141,6 @@ function select(playerChoice) {
 
 
 
-
-
 // ce am invatat : order of priority of css(if you use id that will override any class !important),
+
+startConfetti();
